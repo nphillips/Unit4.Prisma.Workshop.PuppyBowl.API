@@ -2,7 +2,6 @@ const router = require("express").Router();
 const prisma = require("../prisma");
 module.exports = router;
 
-/** Returns an array of all breeds in the database. */
 router.get("/", async (req, res, next) => {
   try {
     const breeds = await prisma.breed.findMany();
@@ -12,7 +11,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-/** Creates a new breed as provided by the request body. */
 router.post("/", async (req, res, next) => {
   try {
     const { breed } = req.body;
@@ -33,7 +31,6 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-/** Returns a single breed with the specified id. */
 router.get("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
@@ -53,7 +50,6 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-/** Updates the specified breed's name as provided by the request body. */
 router.put("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
@@ -85,7 +81,6 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
-/** Deletes the breed with the specified id. */
 router.delete("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
